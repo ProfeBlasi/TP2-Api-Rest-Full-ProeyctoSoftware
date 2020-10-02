@@ -5,6 +5,13 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using AccesData.Context;
+using AccesData.Queries;
+using AccesData.Repositories.Base;
+using Aplication.Services;
+using Domain.Interfaces.Queries;
+using Domain.Interfaces.Repositories;
+using Domain.Interfaces.Repositories.Base;
+using Domain.Interfaces.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -57,6 +64,12 @@ namespace TP2_Api_Rest_Full
                     Description = "Test services"
                 });
             });
+
+            services.AddTransient<ILibroRepository, LibroRepository>();
+
+            services.AddTransient<ILibroService, LibroService>();
+
+            services.AddTransient<ILibroQuery, LibroQuery>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
