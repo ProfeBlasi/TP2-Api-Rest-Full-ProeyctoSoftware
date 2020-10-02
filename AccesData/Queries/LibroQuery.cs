@@ -22,13 +22,13 @@ namespace AccesData.Queries
         public List<ResponseGetLibro> GetLibros()
         {
             var db = new QueryFactory(connection, sqlKatacompiler);
-            var query = db.Query("Libros")
-                .Select("Libros.Titulo",
-                "Libros.Autor",
-                "Libros.Editorial",
-                "Libros.Edicion",
-                "Libros.Stock",
-                "Libros.Imagen");
+            var query = db.Query("Libros");
+                //.Select("Libros.Titulo",
+                //"Libros.Autor",
+                //"Libros.Editorial",
+                //"Libros.Edicion",
+                //"Libros.Stock",
+                //"Libros.Imagen");
             var result = query.Get<ResponseGetLibro>();
             return result.ToList();
         }

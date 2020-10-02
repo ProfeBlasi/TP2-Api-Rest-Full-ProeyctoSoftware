@@ -1,4 +1,4 @@
-﻿    using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,20 +10,20 @@ namespace TP2_Api_Rest_Full.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LibroController : ControllerBase
+    public class ClienteController : ControllerBase
     {
-        private readonly ILibroService _service;
-        public LibroController(ILibroService service)
+        private readonly IClienteService _service;
+        public ClienteController(IClienteService service)
         {
             _service = service;
         }
 
         [HttpGet()]
-        public IActionResult GetLibros()
+        public IActionResult GetCliente()
         {
             try
             {
-                return new JsonResult(_service.GetLibros()) { StatusCode = 200 };
+                return new JsonResult(_service.GetCliente()) { StatusCode = 200 };
             }
             catch (Exception e)
             {

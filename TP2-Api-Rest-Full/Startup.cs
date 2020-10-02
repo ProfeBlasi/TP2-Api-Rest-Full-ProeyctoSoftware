@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AccesData.Context;
 using AccesData.Queries;
+using AccesData.Repositories;
 using AccesData.Repositories.Base;
 using Aplication.Services;
 using Domain.Interfaces.Queries;
@@ -55,21 +56,19 @@ namespace TP2_Api_Rest_Full
             });
 
             //SWAGGER
-            services.AddSwaggerGen(c =>
+            services.AddSwaggerGen(s =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Version = "v1",
-                    Title = "MicroService APIs v1.0",
-                    Description = "Test services"
-                });
+                s.SwaggerDoc("v1", new OpenApiInfo { Title = "REST", Version = "v1" });
             });
 
             services.AddTransient<ILibroRepository, LibroRepository>();
+            services.AddTransient<IClienteRepository, ClienteRepository>();
 
             services.AddTransient<ILibroService, LibroService>();
+            services.AddTransient<IClienteService, ClienteService>();
 
             services.AddTransient<ILibroQuery, LibroQuery>();
+            services.AddTransient<IClienteQuery, ClienteQuery>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -79,7 +78,7 @@ namespace TP2_Api_Rest_Full
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -89,6 +88,15 @@ namespace TP2_Api_Rest_Full
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            //Habilitar swagger
+            app.UseSwagger();
+            //indica la ruta para generar la configuración de swagger
+            app.UseSwaggerUI(s =>
+            {
+                s.SwaggerEndpoint("/swagger/v1/swagger.json", "REST V1");
+                s.RoutePrefix = string.Empty;
             });
         }
     }
