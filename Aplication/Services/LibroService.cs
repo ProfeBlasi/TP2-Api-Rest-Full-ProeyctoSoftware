@@ -17,9 +17,10 @@ namespace Aplication.Services
         {
             _query = query;
         }
-        public List<ResponseGetLibro> GetLibros()
+
+        public List<ResponseGetLibros> GetLibros(bool stock, string autor, string titulo)
         {
-            return _query.GetLibros();
+            return _query.GetLibros(stock, autor, titulo);
         }
     }
 }

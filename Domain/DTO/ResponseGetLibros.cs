@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Domain.DTO
 {
-    public class ResponseGetLibro
+    public class ResponseGetLibros
     {
         public string Titulo { get; set; }
         public string Autor { get; set; }

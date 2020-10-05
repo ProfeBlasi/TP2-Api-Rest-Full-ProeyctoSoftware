@@ -8,6 +8,8 @@ using AccesData.Context;
 using AccesData.Queries;
 using AccesData.Repositories;
 using AccesData.Repositories.Base;
+using AccessData.Queries;
+using AccessData.Repositories;
 using Aplication.Services;
 using Domain.Interfaces.Queries;
 using Domain.Interfaces.Repositories;
@@ -63,12 +65,15 @@ namespace TP2_Api_Rest_Full
 
             services.AddTransient<ILibroRepository, LibroRepository>();
             services.AddTransient<IClienteRepository, ClienteRepository>();
+            services.AddTransient<IAlquileresRepository, AlquileresRepository>();
 
             services.AddTransient<ILibroService, LibroService>();
             services.AddTransient<IClienteService, ClienteService>();
+            services.AddTransient<IAlquileresService, AlquileresService>();
 
             services.AddTransient<ILibroQuery, LibroQuery>();
             services.AddTransient<IClienteQuery, ClienteQuery>();
+            services.AddTransient<IAlquileresQuery, AlquileresQuery>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -95,7 +100,7 @@ namespace TP2_Api_Rest_Full
             //indica la ruta para generar la configuración de swagger
             app.UseSwaggerUI(s =>
             {
-                s.SwaggerEndpoint("/swagger/v1/swagger.json", "REST V1");
+                s.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
                 s.RoutePrefix = string.Empty;
             });
         }

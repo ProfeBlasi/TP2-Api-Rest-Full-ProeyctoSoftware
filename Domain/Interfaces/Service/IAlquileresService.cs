@@ -7,9 +7,8 @@ using System.Text;
 
 namespace Domain.Interfaces.Service
 {
-    public interface ILibroService : IBaseService<Libros>
+    public interface IAlquileresService : IBaseService<Alquileres>
     {
-        List<ResponseGetLibros> GetLibros(bool stock, string autor, string titulo);
-        
+        Alquileres RegistrarProceso(ResponseCreateAlquileres alquileres);
     }
 }

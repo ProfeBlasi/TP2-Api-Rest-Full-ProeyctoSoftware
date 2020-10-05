@@ -6,10 +6,10 @@ namespace Domain.Entities
 {
     public class Cliente
     {
-        [Key][Required]
+        [Key]
         public int ClienteId { get; set; }
         [Column(TypeName = "varchar(10)")]
-        public int DNI { get; set; }
+        public string DNI { get; set; }
         [Column(TypeName = "varchar(45)")]
         public string Nombre { get; set; }
         [Column(TypeName = "varchar(45)")]
