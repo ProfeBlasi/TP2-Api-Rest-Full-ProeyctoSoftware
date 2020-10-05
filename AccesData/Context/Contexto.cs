@@ -24,7 +24,7 @@ namespace AccesData.Context
                 entity.HasData(new Cliente
                 {
                     ClienteId = 1,
-                    DNI = 1,
+                    DNI = "1",
                     Nombre = "Juan",
                     Apellido = "Perez",
                     Email = "jperez@gmail.com",
@@ -32,7 +32,7 @@ namespace AccesData.Context
                 entity.HasData(new Cliente
                 {
                     ClienteId = 2,
-                    DNI = 2,
+                    DNI = "2",
                     Nombre = "Jose",
                     Apellido = "Sosa",
                     Email = "jsosa@gmail.com",
@@ -40,7 +40,7 @@ namespace AccesData.Context
                 entity.HasData(new Cliente
                 {
                     ClienteId = 3,
-                    DNI = 3,
+                    DNI = "3",
                     Nombre = "Gabriel",
                     Apellido = "Ortiz",
                     Email = "gortiz@gmail.com",
@@ -48,7 +48,7 @@ namespace AccesData.Context
                 entity.HasData(new Cliente
                 {
                     ClienteId = 4,
-                    DNI = 4,
+                    DNI = "4",
                     Nombre = "Javier",
                     Apellido = "Fernandez",
                     Email = "jfernandez@gmail.com",

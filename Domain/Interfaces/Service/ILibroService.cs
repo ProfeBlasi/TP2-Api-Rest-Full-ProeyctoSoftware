@@ -9,6 +9,7 @@ namespace Domain.Interfaces.Service
 {
     public interface ILibroService : IBaseService<Libros>
     {
-        List<ResponseGetLibro> GetLibros();
+        List<ResponseGetLibros> GetLibros(bool stock, string autor, string titulo);
+        
     }
 }

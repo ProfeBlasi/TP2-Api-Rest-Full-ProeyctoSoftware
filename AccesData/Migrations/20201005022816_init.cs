@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace AccesData.Migrations
+namespace AccessData.Migrations
 {
     public partial class init : Migration
     {
@@ -13,7 +13,7 @@ namespace AccesData.Migrations
                 {
                     ClienteId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DNI = table.Column<string>(type: "varchar(10)", nullable: false),
+                    DNI = table.Column<string>(type: "varchar(10)", nullable: true),
                     Nombre = table.Column<string>(type: "varchar(45)", nullable: true),
                     Apellido = table.Column<string>(type: "varchar(45)", nullable: true),
                     Email = table.Column<string>(type: "varchar(45)", nullable: true)
@@ -126,12 +126,12 @@ namespace AccesData.Migrations
             migrationBuilder.InsertData(
                 table: "Alquileres",
                 columns: new[] { "ID", "Cliente", "Estado", "FechaAlquiler", "FechaDevolucion", "FechaReserva", "ISBN" },
-                values: new object[] { 1, 1, 1, new DateTime(2020, 10, 1, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(2020, 10, 8, 0, 0, 0, 0, DateTimeKind.Local), null, "123" });
+                values: new object[] { 1, 1, 1, new DateTime(2020, 10, 4, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(2020, 10, 11, 0, 0, 0, 0, DateTimeKind.Local), null, "123" });
 
             migrationBuilder.InsertData(
                 table: "Alquileres",
                 columns: new[] { "ID", "Cliente", "Estado", "FechaAlquiler", "FechaDevolucion", "FechaReserva", "ISBN" },
-                values: new object[] { 2, 2, 2, null, null, new DateTime(2020, 10, 1, 0, 0, 0, 0, DateTimeKind.Local), "234" });
+                values: new object[] { 2, 2, 2, null, null, new DateTime(2020, 10, 4, 0, 0, 0, 0, DateTimeKind.Local), "234" });
 
             migrationBuilder.InsertData(
                 table: "Alquileres",
