@@ -18,12 +18,12 @@ namespace TP2_Api_Rest_Full.Controllers
             _service = service;
         }
 
-        [HttpGet()]
-        public IActionResult GetLibros()
+        [HttpGet]
+        public IActionResult GetLibros([FromQuery] bool stock,[FromQuery] string autor,[FromQuery] string titulo)
         {
             try
             {
-                return new JsonResult(_service.GetLibros()) { StatusCode = 200 };
+                return new JsonResult(_service.GetLibros(stock,autor,titulo)) { StatusCode = 200 };
             }
             catch (Exception e)
             {

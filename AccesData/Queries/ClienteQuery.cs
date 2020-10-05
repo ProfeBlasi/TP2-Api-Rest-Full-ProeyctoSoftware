@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace AccesData.Queries
 {
@@ -19,19 +20,25 @@ namespace AccesData.Queries
 
         }
 
-        public List<ResponseGetCliente> GetCliente()
+        public List<ResponseGetCliente> GetCliente(string dni, string nombre, string apellido)
         {
             var db = new QueryFactory(connection, sqlKatacompiler);
-            var query = db.Query("Cliente");
-                //.Select(
-                //"Cliente.DNI",
-                //"Cliente.Nombre",
-                //"Cliente.Apellido",
-                //"Cliente.Email"
-                //);
+            var query = db.Query("Cliente")
+                 .When(!!string.IsNullOrWhiteSpace(dni), x => x.Where("Dni", "=", dni))
+                 .When(!string.IsNullOrWhiteSpace(nombre), q => q.WhereLike("Nombre", $"%{nombre}%"))
+                 .When(!string.IsNullOrWhiteSpace(apellido), s => s.WhereLike("Apellido", $"%{apellido}%"));
             var result = query.Get<ResponseGetCliente>();
             return result.ToList();
         }
 
+        public bool ExisteDni(string dni)
+        {
+            var db = new QueryFactory(connection, sqlKatacompiler);
+            var query = db.Query("Cliente")
+                .Where("Dni", "=", dni)
+                .Get<ResponseGetCliente>()
+                .FirstOrDefault();
+            return (query != null);
+        }
     }
 }

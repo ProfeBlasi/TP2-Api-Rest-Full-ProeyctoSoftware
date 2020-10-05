@@ -5,7 +5,7 @@ namespace Domain.Entities
 { 
     public class Libros
     {
-        [Key][Required][Column(TypeName = "varchar(45)")]
+        [Key][Column(TypeName = "varchar(45)")]
         public string ISBN { get; set; }
         [Column(TypeName = "varchar(45)")]
         public string Titulo { get; set; }

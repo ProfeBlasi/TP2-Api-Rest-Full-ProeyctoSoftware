@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace AccesData.Migrations
+namespace AccessData.Migrations
 {
     [DbContext(typeof(Contexto))]
     partial class ContextoModelSnapshot : ModelSnapshot
@@ -61,8 +61,8 @@ namespace AccesData.Migrations
                             ID = 1,
                             Cliente = 1,
                             Estado = 1,
-                            FechaAlquiler = new DateTime(2020, 10, 1, 0, 0, 0, 0, DateTimeKind.Local),
-                            FechaDevolucion = new DateTime(2020, 10, 8, 0, 0, 0, 0, DateTimeKind.Local),
+                            FechaAlquiler = new DateTime(2020, 10, 4, 0, 0, 0, 0, DateTimeKind.Local),
+                            FechaDevolucion = new DateTime(2020, 10, 11, 0, 0, 0, 0, DateTimeKind.Local),
                             ISBN = "123"
                         },
                         new
@@ -70,7 +70,7 @@ namespace AccesData.Migrations
                             ID = 2,
                             Cliente = 2,
                             Estado = 2,
-                            FechaReserva = new DateTime(2020, 10, 1, 0, 0, 0, 0, DateTimeKind.Local),
+                            FechaReserva = new DateTime(2020, 10, 4, 0, 0, 0, 0, DateTimeKind.Local),
                             ISBN = "234"
                         },
                         new
@@ -93,7 +93,6 @@ namespace AccesData.Migrations
                         .HasColumnType("varchar(45)");
 
                     b.Property<string>("DNI")
-                        .IsRequired()
                         .HasColumnType("varchar(10)");
 
                     b.Property<string>("Email")

@@ -5,7 +5,6 @@ namespace Domain.Entities
 {
     public class EstadoDeAlquileres
     {
-        [Required]
         [Key]
         public int EstadoId { get; set; }
         [Column(TypeName = "varchar(45)")]
