@@ -9,14 +9,26 @@ namespace Aplication.Services
     public class Validaciones
     {
         private readonly IClienteQuery _queryCliente;
-        public Validaciones(IClienteQuery query)
+        private readonly IAlquileresQuery _queryAlquileres;
+        private readonly ILibroQuery _queryLibro;
+        public Validaciones()
         {
-            _queryCliente = query;
+
+        }
+        public Validaciones(IClienteQuery query1, IAlquileresQuery query2, ILibroQuery query3)
+        {
+            _queryCliente = query1;
+            _queryAlquileres = query2;
+            _queryLibro = query3;
         }
 
         public bool ExisteDni(string dni)
         {
             return _queryCliente.ExisteDni(dni);
+        }
+        public bool ExisteId(int id)
+        {
+            return _queryAlquileres.ExisteId(id);
         }
         public static bool SoloLetras(string array)
         {
@@ -28,5 +40,14 @@ namespace Aplication.Services
             return Regex.IsMatch(array, @"^[0-9]+$");
         }
 
+        public bool ExisteISBN(string isbn)
+        {
+            return _queryAlquileres.ExisteISBN(isbn);
+        }
+
+        public bool ExisteReserva(int id, string isbn)
+        {
+            return _queryAlquileres.ExisteReserva(id, isbn);
+        }
     }
 }

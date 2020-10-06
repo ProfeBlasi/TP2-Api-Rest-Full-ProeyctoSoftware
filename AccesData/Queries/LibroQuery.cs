@@ -28,27 +28,6 @@ namespace AccesData.Queries
                 .When(!string.IsNullOrWhiteSpace(titulo), s => s.WhereLike("titulo", $"%{titulo}%"));
             var result = query.Get<ResponseGetLibros>();
             return result.ToList();
-        }
-
-        public bool ExisteStock(string isbn)
-        {
-            var db = new QueryFactory(connection, sqlKatacompiler);
-            var query = db.Query("Libros")
-                .Where("ISBN", "=", isbn)
-                .Where("Stock", ">", 0)
-                .Get<ResponseGetLibros>()
-                .FirstOrDefault();
-            return (query != null);
-        }
-
-        public bool ExisteISBN(string isbn)
-        {
-            var db = new QueryFactory(connection, sqlKatacompiler);
-            var query = db.Query("Libros")
-                .Where("ISBN", "=", isbn)
-                .Get<ResponseGetLibros>()
-                .FirstOrDefault();
-            return (query != null);
-        }
+        }    
     }
 }

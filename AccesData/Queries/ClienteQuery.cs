@@ -24,7 +24,7 @@ namespace AccesData.Queries
         {
             var db = new QueryFactory(connection, sqlKatacompiler);
             var query = db.Query("Cliente")
-                 .When(!!string.IsNullOrWhiteSpace(dni), x => x.Where("Dni", "=", dni))
+                 .When(!string.IsNullOrWhiteSpace(dni), x => x.WhereLike("DNI", $"%{dni}%"))
                  .When(!string.IsNullOrWhiteSpace(nombre), q => q.WhereLike("Nombre", $"%{nombre}%"))
                  .When(!string.IsNullOrWhiteSpace(apellido), s => s.WhereLike("Apellido", $"%{apellido}%"));
             var result = query.Get<ResponseGetCliente>();
@@ -40,5 +40,6 @@ namespace AccesData.Queries
                 .FirstOrDefault();
             return (query != null);
         }
+
     }
 }

@@ -18,37 +18,48 @@ namespace Aplication.Services
             query = _query;
         }
 
-        public Alquileres RegistrarProceso(ResponseCreateAlquileres alquileres)
+        public ClienteDto RegistrarProceso(ResponseCreateAlquileres alquileres)
         {
-            Alquileres entity = new Alquileres()
+            ClienteDto imprimir = new ClienteDto();
+            Validaciones val = new Validaciones();
             {
-                Cliente = alquileres.Cliente,
-                ISBN = alquileres.ISBN,
-                Estado = alquileres.Estado
-            };
-            switch (alquileres.Estado)
-            {
-                case 1:
-                    entity.FechaAlquiler = DateTime.Today;
-                    entity.FechaReserva = null;
-                    entity.FechaDevolucion = DateTime.Today.AddDays(7);
-                    break;
-                case 2:
-                    entity.FechaAlquiler = null;
-                    entity.FechaReserva = DateTime.Today;
-                    entity.FechaDevolucion = null;
-                    break;
-                case 3:
-                    entity.FechaAlquiler = null;
-                    entity.FechaReserva = null;
-                    entity.FechaDevolucion = null;
-                    break;
-                default:
-                    break;
+                if (val.ExisteReserva(alquileres.Cliente, alquileres.ISBN))
+                {
+                    Alquileres entity = new Alquileres()
+                    {
+                        Cliente = alquileres.Cliente,
+                        ISBN = alquileres.ISBN,
+                        Estado = alquileres.Estado
+                    };
+                    switch (alquileres.Estado)
+                    {
+                        case 1:
+                            entity.FechaAlquiler = DateTime.Today;
+                            entity.FechaReserva = null;
+                            entity.FechaDevolucion = DateTime.Today.AddDays(7);
+                            break;
+                        case 2:
+                            entity.FechaAlquiler = null;
+                            entity.FechaReserva = DateTime.Today;
+                            entity.FechaDevolucion = null;
+                            break;
+                        case 3:
+                            entity.FechaAlquiler = null;
+                            entity.FechaReserva = null;
+                            entity.FechaDevolucion = null;
+                            break;
+                        default:
+                            break;
+                    }
+                    Add(entity);
+                    return imprimir;
+                }
+                else
+                {
+                    imprimir.Mensaje = "Ocurrio un error";
+                    return imprimir;
+                }
             }
-            Add(entity);
-            return entity;
         }
-
     }
 }
