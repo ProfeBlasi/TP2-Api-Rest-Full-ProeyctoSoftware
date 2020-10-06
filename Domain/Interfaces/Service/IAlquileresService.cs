@@ -9,6 +9,6 @@ namespace Domain.Interfaces.Service
 {
     public interface IAlquileresService : IBaseService<Alquileres>
     {
-        Alquileres RegistrarProceso(ResponseCreateAlquileres alquileres);
+        ClienteDto RegistrarProceso(ResponseCreateAlquileres alquileres);
     }
 }
